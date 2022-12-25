@@ -1,6 +1,6 @@
 {
     "name": "@frank-mayer/react-tag-cloud",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "isLibrary": true,
     "description": "React component for Cong Mins TagCloud",
     "source": "src/index.ts",
@@ -9,7 +9,7 @@
     "module": "module.js",
     "scripts": {
         "watch": "parcel watch",
-        "build": "parcel build"
+        "build": "parcel build --no-source-maps"
     },
     "dependencies": {
         "TagCloud": "^2.3.0"

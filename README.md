@@ -10,9 +10,12 @@ npm install @frank-mayer/react-tag-cloud
 
 ## Usage
 
+The component can be imported as a named export or as a default export.
+
 ```tsx
-import React from "react"
-import TagCloud from "@frank-mayer/react-tag-cloud"
+import React from "react";
+import { TagCloud } from "@frank-mayer/react-tag-cloud";
+// same as: import TagCloud from "@frank-mayer/react-tag-cloud"
 
 const App = () => (
     <TagCloud
@@ -35,5 +38,5 @@ const App = () => (
             "Three.js",
         ]}
     </TagCloud>
-)
+);
 ```
