@@ -1,8 +1,10 @@
 # Source Files
 src/
 
-# GitHub
+# Git
 .github/
+.gitattributes
+.gitignore
 
 # Tests
 *.test.js
@@ -25,6 +27,7 @@ lerna-debug.log*
 .idea
 .vscode
 .vs
+.editorconfig
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -64,8 +67,9 @@ jspm_packages/
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
-# TypeScript cache
+# TypeScript
 *.tsbuildinfo
+tsconfig.json
 
 # Optional npm cache directory
 .npm
