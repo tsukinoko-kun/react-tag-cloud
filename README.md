@@ -27,18 +27,13 @@ const App = () => (
             radius: Math.min(500, w.innerWidth, w.innerHeight) / 2,
             maxSpeed: "fast",
         })}
+        onClick={(tag: string, ev: MouseEvent) => alert(tag)}
+        onClickOptions={{ passive: true }}
     >
         {[
-            {
-                text: "VSCode",
-                onClick: (ev: MouseEvent) => alert("VSCode"),
-            },
-            {
-                text: "TypeScript",
-                onClick: (ev: MouseEvent) => alert("TypeScript"),
-                onClickOptions: { passive: true },
-            },
-            { text: "React" },
+            "VSCode",
+            "TypeScript",
+            "React",
             "Preact",
             "Parcel",
             "Jest",

@@ -5,13 +5,7 @@ import type { CSSProperties } from "react";
 
 export type { TagCloudOptions };
 
-type Tag = {
-    text: string;
-    onClick?: (event: MouseEvent) => void;
-    onClickOptions?: AddEventListenerOptions;
-};
-
-type Props<T extends string | Tag> = {
+type Props<T extends string> = {
     id?: string;
     children: Array<T>;
     className?: string;
@@ -19,6 +13,7 @@ type Props<T extends string | Tag> = {
         | TagCloudOptions
         | ((window: Window & typeof globalThis) => TagCloudOptions);
     style?: CSSProperties;
+    onClick?: (tag: T, event: MouseEvent) => void;
     onClickOptions?: AddEventListenerOptions;
 };
 
@@ -38,11 +33,16 @@ const setIsInitialized = (id: string, value: boolean) => {
     (window as any)[key] = value;
 };
 
-export const TagCloud = <T extends string | Tag>(props: Props<T>) => {
+export const TagCloud = <T extends string>(props: Props<T>) => {
     const ref = useRef<HTMLDivElement>(null);
+    const key = [
+        props.id,
+        props.className,
+        JSON.stringify(props.children),
+    ].join("-");
 
     useEffect(() => {
-        if (getIsInitialized(props.id) || !ref.current) {
+        if (getIsInitialized(key) || !ref.current) {
             return;
         }
 
@@ -57,57 +57,30 @@ export const TagCloud = <T extends string | Tag>(props: Props<T>) => {
                 : props.options
             : {};
 
-        let onClickUsed = false;
-        const texts = props.children.map((child) => {
-            switch (typeof child) {
-                case "string":
-                    return child;
-                case "object": {
-                    if (child.onClick && !onClickUsed) {
-                        onClickUsed = true;
-                    }
+        const tagCloud = createTagCloud(
+            ref.current as any,
+            props.children,
+            options
+        );
 
-                    if (child.text) {
-                        return child.text;
-                    }
-                }
-            }
+        setIsInitialized(key, true);
 
-            return JSON.stringify(child);
-        });
-
-        const tagCloud = createTagCloud(ref.current as any, texts, options);
-
-        setIsInitialized(props.id, true);
-
-        if (onClickUsed) {
+        if (props.onClick) {
             const elements = Array.from(
                 ref.current.getElementsByClassName(
                     options.itemClass ?? "tagcloud--item"
                 )
             ) as Array<HTMLElement>;
 
-            for (const el of elements) {
-                for (const child of props.children) {
-                    if (typeof child == "string") {
-                        if (child === el.innerText) {
-                            break;
-                        }
-
-                        continue;
-                    }
-
-                    if (child.text === el.innerText) {
-                        if (child.onClick) {
-                            el.addEventListener(
-                                "click",
-                                child.onClick,
-                                child.onClickOptions ?? props.onClickOptions
-                            );
-                        }
-
-                        break;
-                    }
+            if (props.onClick) {
+                for (const el of elements) {
+                    el.addEventListener(
+                        "click",
+                        (event) => {
+                            props.onClick(el.innerText as T, event);
+                        },
+                        props.onClickOptions
+                    );
                 }
             }
         }
@@ -116,10 +89,10 @@ export const TagCloud = <T extends string | Tag>(props: Props<T>) => {
             try {
                 tagCloud?.destroy();
             } finally {
-                setIsInitialized(props.id, false);
+                setIsInitialized(key, false);
             }
         };
-    }, [ref]);
+    }, [ref, key, props]);
 
     return createElement("div", {
         id: props.id,
