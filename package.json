@@ -1,6 +1,24 @@
 {
     "name": "@frank-mayer/react-tag-cloud",
-    "version": "1.2.0",
+    "version": "1.2.1",
+    "author": "Frank Mayer",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Frank-Mayer/react-tag-cloud.git"
+    },
+    "keywords": [
+        "react",
+        "tag",
+        "cloud",
+        "component",
+        "react-component",
+        "react-component-library",
+    ],
+    "issues": {
+        "url": "https://github.com/Frank-Mayer/react-tag-cloud/issues"
+    },
+    "homepage": "https://github.com/Frank-Mayer/react-tag-cloud#readme",
     "isLibrary": true,
     "description": "React component for Cong Mins TagCloud",
     "source": "src/index.ts",
