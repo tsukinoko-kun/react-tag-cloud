@@ -13,7 +13,7 @@
         "cloud",
         "component",
         "react-component",
-        "react-component-library",
+        "react-component-library"
     ],
     "issues": {
         "url": "https://github.com/Frank-Mayer/react-tag-cloud/issues"
