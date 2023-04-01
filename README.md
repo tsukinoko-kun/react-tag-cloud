@@ -1,18 +1,46 @@
-# React Tag Cloud
+<p align="center">
+    <img src="https://raw.githubusercontent.com/cong-min/TagCloud/master/examples/tagcloud.gif" />
+</p>
 
-React component for [Cong Min](https://github.com/cong-min)s [TagCloud](https://github.com/cong-min/TagCloud)
+<h1 align="center">React Tag Cloud</h1>
+
+Port of [Cong Min](https://github.com/cong-min)s [TagCloud](https://github.com/cong-min/TagCloud) as a React Component
 
 ## Installation
+
+### npm
 
 ```bash
 npm install @frank-mayer/react-tag-cloud
 ```
 
+### yarn
+
+```bash
+yarn add @frank-mayer/react-tag-cloud
+```
+
+### pnpm
+
+```bash
+pnpm add @frank-mayer/react-tag-cloud
+```
+
+### bun
+
+```bash
+bun add @frank-mayer/react-tag-cloud
+```
+
 ## Usage
 
-The component can be imported as a named export or as a default export (useful for lazy components).
+Since this component is based on a non-React library, it uses the `useEffect` hook and cannot be rendered on the server.
 
-The `options` property can modify the behaviour of the tag cloud. You can provide the options as a `object` or as a `function`. If you provide a function, the `window` object will be passed as an argument. This is useful if you want to use the window size to calculate the radius of the tag cloud.
+The component can be imported as a named export or as a default export (useful for lazy loaded components).
+
+The `options` property can modify the behaviour of the component. You can provide the options as a `object` or as a `function` that returns this `object`.
+If you provide a `function`, the `window` object will be passed as an argument.
+This is useful if you want to use the window size to calculate the radius of the tag cloud.
 
 Pass an `Array` of `string`s as children to the component. This will be used as the tags.
 
