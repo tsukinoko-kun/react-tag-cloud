@@ -6,6 +6,8 @@
 
 Port of [Cong Min](https://github.com/cong-min)s [TagCloud](https://github.com/cong-min/TagCloud) as a React Component
 
+![this product is ai free](https://this-product-is-ai-free.github.io/badge.svg)
+
 ## Installation
 
 ### npm
