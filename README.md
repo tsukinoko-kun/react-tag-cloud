@@ -8,6 +8,8 @@ Port of [Cong Min](https://github.com/cong-min)s [TagCloud](https://github.com/c
 
 [![this product is ai free](https://this-product-is-ai-free.github.io/badge.svg)](https://this-product-is-ai-free.github.io)
 
+[![Test](https://github.com/Frank-Mayer/react-tag-cloud/actions/workflows/test.yml/badge.svg)](https://github.com/Frank-Mayer/react-tag-cloud/actions/workflows/test.yml)
+
 ## Installation
 
 ### npm
